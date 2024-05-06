@@ -36,17 +36,32 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
   const navigate = useNavigate();
+  const [toggleSort, setToggleSort] = useState('desc');
   const [filteredData, setFilteredData] = useState([]);
 
   // handler for sorting the data.
   const handleSort = () => {
-    const sortedTask = task.sort((a, b) => {
-      let x = a.title.toLowerCase();
-      let y = b.title.toLowerCase();
-      if (x > y) return 1;
-      if (x < y) return -1;
-      return 0;
-    });
+    console.log('sorting in progress');
+    let sortedTask = [];
+    if (toggleSort === 'asc') {
+      sortedTask = task.sort((a, b) => {
+        let x = a.title.toLowerCase();
+        let y = b.title.toLowerCase();
+        if (x > y) return 1;
+        if (x < y) return -1;
+        return 0;
+      });
+      setToggleSort('desc');
+    } else if (toggleSort === 'desc') {
+      sortedTask = task.sort((a, b) => {
+        let x = a.title.toLowerCase();
+        let y = b.title.toLowerCase();
+        if (x < y) return 1;
+        if (x > y) return -1;
+        return 0;
+      });
+      setToggleSort('asc');
+    }
     setFilteredData(sortedTask);
   }
 
@@ -69,7 +84,9 @@ const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
   return (
     <>
       <Box className='main-heading-container'>
-        <h1 className='main-heading'>Your Task List</h1>
+        <h1 className='main-heading'>
+          Your Task List
+          </h1>
       </Box>
       {
         filteredData.length > 0
