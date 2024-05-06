@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import { Box, Button, IconButton, InputBase } from '@mui/material';
 
@@ -94,7 +96,8 @@ const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
       </Box>
       <Box className='filters-container'>
         <Box className='sort-filter-container' onClick={handleSort}>
-          <strong>Sort your list by title name.</strong>
+          <strong>Sort your list by title name</strong>
+          {toggleSort === 'asc' ? <ArrowDownwardIcon /> : <ArrowUpwardIcon />}
         </Box>
         <Search
           value={searchText}
