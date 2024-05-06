@@ -5,12 +5,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import ProtectedRoutes from './layout/ProtectedRoutes';
 
-const Login = lazy(() => import('./component/Login'));
-const Header = lazy(() => import('./component/Header'));
-const Footer = lazy(() => import('./component/Footer'));
-const Signup = lazy(() => import('./component/Signup'));
-const ViewTask = lazy(() => import('./pages/ViewTask'));
-const CreateOrEditTask = lazy(() => import('./pages/CreateOrEditTask'));
+const Login = lazy(() => import('./component/Login/Login'));
+const Header = lazy(() => import('./component/Header/Header'));
+const Footer = lazy(() => import('./component/Footer/Footer'));
+const Signup = lazy(() => import('./component/Signup/Signup'));
+const ViewTask = lazy(() => import('./pages/ViewTask/ViewTask'));
+const CreateOrEditTask = lazy(() => import('./pages/CreateOrEditTask/CreateOrEditTask'));
 
 const App = () => {
   /*Here we're checking that whether "task" key is available in localStorage or not.
