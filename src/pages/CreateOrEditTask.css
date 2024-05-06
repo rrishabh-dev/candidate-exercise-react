@@ -1,0 +1,17 @@
+.card-container {
+  margin: 32px;
+  background-color: #9b939330 !important;
+}
+
+.form-heading-container {
+  padding: 16px;
+  text-align: center;
+}
+
+.form-container {
+  padding: 32px 40px 16px;
+}
+
+.btn-container {
+  margin-top: 0 !important;
+}

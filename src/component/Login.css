@@ -1,0 +1,19 @@
+.login-main-box {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-lock-icon {
+  margin: 8px;
+  background-color: blueviolet !important;
+}
+
+.login-form-container {
+  margin-top: 8px;
+}
+
+.log-in-btn {
+  margin: 16px 0 !important;
+}

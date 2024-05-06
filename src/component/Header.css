@@ -1,0 +1,12 @@
+.header-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-main-heading {
+  cursor: pointer;
+}
+
+.hamburger-menu {
+  display: flex;
+}

@@ -1,0 +1,71 @@
+.main-heading-container {
+  text-align: center;
+  box-shadow: 0 1px 3px #000000;
+  background-color: #eeeeee;
+}
+
+.main-heading {
+  margin: 1rem auto;
+}
+
+.neglect-default-spacing {
+  margin: 0;
+}
+
+.filters-container {
+  gap: .5rem;
+  display: flex;
+  margin: 16px 16px 0 16px;
+  justify-content: space-between;
+}
+
+.sort-filter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.task-details-main-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding: 24px 16px;
+}
+
+.task-details-full {
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  background-color: #eeeeee;
+  padding: 16px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.task-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.empty-list-container {
+  border: 1px solid;
+  padding: 24px 16px;
+  margin: 16px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  background-color: #eeeeee;
+}
