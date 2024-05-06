@@ -41,8 +41,12 @@ const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
 
   // handler for sorting the data.
   const handleSort = () => {
-    console.log('sorting in progress');
     let sortedTask = [];
+
+    /*If toggleSort state variable is asc then this handler will sort task data according
+      to ascending order and if user again clicks on the same button then toggleSort state
+      gets changed to desc and then it will sort the task data according to descending order
+      and render the list on UI accordingly.*/
     if (toggleSort === 'asc') {
       sortedTask = task.sort((a, b) => {
         let x = a.title.toLowerCase();
@@ -86,72 +90,80 @@ const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
       <Box className='main-heading-container'>
         <h1 className='main-heading'>
           Your Task List
-          </h1>
+        </h1>
+      </Box>
+      <Box className='filters-container'>
+        <Box className='sort-filter-container' onClick={handleSort}>
+          <strong>Sort your list by title name.</strong>
+        </Box>
+        <Search
+          value={searchText}
+          onChange={(e) => handleSearch(e)}
+        >
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Search By Task Id..."
+            inputProps={{ 'aria-label': 'search' }}
+          />
+        </Search>
       </Box>
       {
         filteredData.length > 0
-          ? <>
-              <Box className='filters-container'>
-                <Box className='sort-filter-container' onClick={handleSort}>
-                  <strong>Sort your list by title name.</strong>
-                </Box>
-                <Search
-                  value={searchText}
-                  onChange={(e) => handleSearch(e)}
-                >
-                  <SearchIconWrapper>
-                    <SearchIcon />
-                  </SearchIconWrapper>
-                  <StyledInputBase
-                    placeholder="Search By Task Id..."
-                    inputProps={{ 'aria-label': 'search' }}
-                  />
-                </Search>
-              </Box>
-              <Box className='task-details-main-container'>
-                {
-                  filteredData.map((el, index) => (
-                    <Box key={index} className='task-details-full'>
-                      <Box className='task-details'>
-                        <Box>
-                          <p className='neglect-default-spacing'><strong>Task ID: </strong>{el.taskId}</p>
-                          <h2 className='neglect-default-spacing'>Tittle: {el.title}</h2>
-                        </Box>
-                        <Box>
-                          <p className='neglect-default-spacing'><strong>Priority: </strong>{el.priorityLevel}</p>
-                          <p className='neglect-default-spacing'><strong>Status: </strong>{el.status}</p>
-                        </Box>
-                        <Box>
-                          <IconButton
-                            size="large"
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-haspopup="true"
-                            onClick={() => handleDeleteTask(el)}
-                            color="inherit"
-                          >
-                            <DeleteRoundedIcon />
-                          </IconButton>
-                          <IconButton
-                            size="large"
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-haspopup="true"
-                            onClick={() => navigate(`/edit-task/${el.taskId}`)}
-                            color="inherit"
-                          >
-                            <EditRoundedIcon />
-                          </IconButton>
-                        </Box>
+          ? <Box className='task-details-main-container'>
+              {
+                filteredData.map((el, index) => (
+                  <Box key={index} className='task-details-full'>
+                    <Box className='task-details'>
+                      <Box>
+                        <p className='neglect-default-spacing'>
+                          <strong>Task ID: </strong>
+                          {el.taskId}
+                        </p>
+                        <h2 className='neglect-default-spacing'>
+                          Tittle: {el.title}
+                        </h2>
                       </Box>
                       <Box>
-                        <p className='neglect-default-spacing'><strong>Description: </strong>{el.description}</p>
+                        <p className='neglect-default-spacing'>
+                          <strong>Priority: </strong>
+                          {el.priorityLevel}
+                        </p>
+                        <p className='neglect-default-spacing'>
+                          <strong>Status: </strong>
+                          {el.status}
+                        </p>
+                      </Box>
+                      <Box>
+                        <IconButton
+                          edge="end"
+                          size="large"
+                          color="inherit"
+                          onClick={() => handleDeleteTask(el)}
+                        >
+                          <DeleteRoundedIcon />
+                        </IconButton>
+                        <IconButton
+                          edge="end"
+                          size="large"
+                          color="inherit"
+                          onClick={() => navigate(`/edit-task/${el.taskId}`)}
+                        >
+                          <EditRoundedIcon />
+                        </IconButton>
                       </Box>
                     </Box>
-                  ))
-                }
-              </Box>
-            </>
+                    <Box>
+                      <p className='neglect-default-spacing'>
+                        <strong>Description: </strong>
+                        {el.description}
+                      </p>
+                    </Box>
+                  </Box>
+                ))
+              }
+            </Box>
           : <Box className='empty-list-container'>
               <h2>Nothing in your task list for now.</h2>
               <Button
