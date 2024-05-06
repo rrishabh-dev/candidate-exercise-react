@@ -17,6 +17,10 @@
   display: flex;
   margin: 16px 16px 0 16px;
   justify-content: space-between;
+
+  @media (max-width: 599px) {
+    flex-direction: column;
+  }
 }
 
 .sort-filter-container {
@@ -31,6 +35,11 @@
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
+
+  @media (max-width: 599px) {
+    width: 100%;
+    padding: 8px 0;
+  }
 }
 
 .task-details-main-container {
@@ -58,6 +67,47 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 599px) {
+    flex-direction: column;
+  }
+}
+
+.task-detail-container-first {
+  width: 65%;
+
+  @media (max-width: 599px) {
+    width: 100%;
+  }
+}
+
+.task-detail-container-second {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 599px) {
+    width: 100%;
+  }
+}
+
+.task-detail-container-third {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 599px) {
+    width: 100%;
+    justify-content: start;
+  }
+}
+
+.task-detail-container-third-icon-btn {
+  @media (max-width: 599px) {
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    padding-bottom: 0 !important;
+  }
 }
 
 .empty-list-container {

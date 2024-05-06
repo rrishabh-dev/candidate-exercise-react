@@ -15,7 +15,11 @@ const Search = styled('div')(({ theme }) => ({
   width: '50%',
   border: '1px solid',
   position: 'relative',
-  borderRadius: theme.shape.borderRadius
+  borderRadius: theme.shape.borderRadius,
+  [theme.breakpoints.down('sm')]: {
+    // marginLeft: theme.spacing(1),
+    width: '100%',
+  },
 }));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -119,7 +123,7 @@ const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
                 filteredData.map((el, index) => (
                   <Box key={index} className='task-details-full'>
                     <Box className='task-details'>
-                      <Box>
+                      <Box className='task-detail-container-first'>
                         <p className='neglect-default-spacing'>
                           <strong>Task ID: </strong>
                           {el.taskId}
@@ -128,22 +132,22 @@ const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
                           Tittle: {el.title}
                         </h2>
                       </Box>
-                      <Box>
+                      <Box className='task-detail-container-second'>
                         <p className='neglect-default-spacing'>
-                          <strong>Priority: </strong>
-                          {el.priorityLevel}
+                          <strong>Priority: </strong>{el.priorityLevel}
                         </p>
                         <p className='neglect-default-spacing'>
                           <strong>Status: </strong>
                           {el.status}
                         </p>
                       </Box>
-                      <Box>
+                      <Box className='task-detail-container-third'>
                         <IconButton
                           edge="end"
                           size="large"
                           color="inherit"
                           onClick={() => handleDeleteTask(el)}
+                          className='task-detail-container-third-icon-btn'
                         >
                           <DeleteRoundedIcon />
                         </IconButton>
@@ -151,6 +155,7 @@ const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
                           edge="end"
                           size="large"
                           color="inherit"
+                          className='task-detail-container-third-icon-btn'
                           onClick={() => navigate(`/edit-task/${el.taskId}`)}
                         >
                           <EditRoundedIcon />
