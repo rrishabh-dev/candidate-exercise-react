@@ -8,7 +8,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import { Box, Button, IconButton, InputBase, TablePagination } from '@mui/material';
 
-import './ViewTask.css';
+import './ViewTask.scss';
 
 // All these are styled custom components for Search bar available in this page.
 const Search = styled('div')(({ theme }) => ({

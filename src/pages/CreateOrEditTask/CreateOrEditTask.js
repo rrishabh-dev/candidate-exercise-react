@@ -13,7 +13,7 @@ import InputLabel from '@mui/material/InputLabel';
 import Typography from '@mui/material/Typography';
 import FormControl from '@mui/material/FormControl';
 
-import './CreateOrEditTask.css';
+import './CreateOrEditTask.scss';
 
 const CreateOrEditTask = ({ handleCreateTask, handleEditTask }) => {
   const params = useLocation();

@@ -10,7 +10,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-import './Signup.css';
+import './Signup.scss';
 
 const Signup = () => {
   const navigate = useNavigate();

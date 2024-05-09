@@ -12,7 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 
-import './Header.css';
+import './Header.scss';
 
 const pages = ['Create Task', 'View Task'];
 
