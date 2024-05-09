@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
-import Link from '@mui/material/Link';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import { AppBar, Box, IconButton, Link, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material';
 
 import './Header.scss';
 

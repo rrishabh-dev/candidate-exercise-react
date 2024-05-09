@@ -95,7 +95,6 @@ const App = () => {
                 </>
               }/>
             </Route>
-
             <Route path='/create-task' element={<ProtectedRoutes />}>
               <Route path='/create-task' element={
                 <>
@@ -105,7 +104,6 @@ const App = () => {
                 </>
               }/>
             </Route>
-
             <Route path='/edit-task/:id' element={<ProtectedRoutes />}>
               <Route path='/edit-task/:id' element={
                 <>

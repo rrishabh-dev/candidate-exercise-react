@@ -6,7 +6,13 @@ import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-import { Box, Button, IconButton, InputBase, TablePagination } from '@mui/material';
+import {
+  Box,
+  Button,
+  IconButton,
+  InputBase,
+  TablePagination
+} from '@mui/material';
 
 import './ViewTask.scss';
 
