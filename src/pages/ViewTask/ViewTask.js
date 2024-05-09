@@ -6,7 +6,7 @@ import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-import { Box, Button, IconButton, InputBase } from '@mui/material';
+import { Box, Button, IconButton, InputBase, TablePagination } from '@mui/material';
 
 import './ViewTask.css';
 
@@ -17,7 +17,6 @@ const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
   [theme.breakpoints.down('sm')]: {
-    // marginLeft: theme.spacing(1),
     width: '100%',
   },
 }));
@@ -42,8 +41,17 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
   const navigate = useNavigate();
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [toggleSort, setToggleSort] = useState('desc');
   const [filteredData, setFilteredData] = useState([]);
+
+  const handleChangePage = (_, newPage) => setPage(newPage);
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   // handler for sorting the data.
   const handleSort = () => {
@@ -54,7 +62,7 @@ const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
       gets changed to desc and then it will sort the task data according to descending order
       and render the list on UI accordingly.*/
     if (toggleSort === 'asc') {
-      sortedTask = task.sort((a, b) => {
+      sortedTask = filteredData.sort((a, b) => {
         let x = a.title.toLowerCase();
         let y = b.title.toLowerCase();
         if (x > y) return 1;
@@ -63,7 +71,7 @@ const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
       });
       setToggleSort('desc');
     } else if (toggleSort === 'desc') {
-      sortedTask = task.sort((a, b) => {
+      sortedTask = filteredData.sort((a, b) => {
         let x = a.title.toLowerCase();
         let y = b.title.toLowerCase();
         if (x < y) return 1;
@@ -120,7 +128,9 @@ const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
         filteredData.length > 0
           ? <Box className='task-details-main-container'>
               {
-                filteredData.map((el, index) => (
+                filteredData
+                .slice(page * rowsPerPage, (page * rowsPerPage) + rowsPerPage)
+                .map((el, index) => (
                   <Box key={index} className='task-details-full'>
                     <Box className='task-details'>
                       <Box className='task-detail-container-first'>
@@ -182,6 +192,15 @@ const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
               </Button>
             </Box>
       }
+      <TablePagination
+        component="div"
+        count={filteredData.length}
+        page={page}
+        onPageChange={handleChangePage}
+        rowsPerPage={rowsPerPage}
+        rowsPerPageOptions={[5, 10, 25, 50]}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </>
   )
 }

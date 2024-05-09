@@ -3,3 +3,7 @@
   min-height: 100vh;
   flex-direction: column;
 }
+
+.MuiTablePagination-selectIcon {
+  top: calc(42% - .5em) !important;
+}
