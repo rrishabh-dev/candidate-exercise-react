@@ -71,6 +71,10 @@ const App = () => {
     setSearchText(e.target.value);
   }
 
+  const handleClearSearchText = () => {
+    setSearchText('');
+  }
+
   return (
     <div className='app'>
       <Suspense fallback={<div>Loading...</div>}>
@@ -89,6 +93,7 @@ const App = () => {
                     task={task}
                     searchText={searchText}
                     handleSearch={handleSearch}
+                    handleClearSearchText={handleClearSearchText}
                     handleDeleteTask={handleDeleteTask}
                   />
                   <Footer />

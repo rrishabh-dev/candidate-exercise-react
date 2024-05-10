@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import {
@@ -45,7 +46,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
+const ViewTask = ({ task, searchText, handleSearch, handleClearSearchText, handleDeleteTask }) => {
   const navigate = useNavigate();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -100,7 +101,7 @@ const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
   useEffect(() => {
     let filteredTasks = [];
     if (task.length > 0) {
-      filteredTasks = task.filter(el => el.taskId.toLowerCase().includes(searchText.toLowerCase()));
+      filteredTasks = task.filter(el => el.title.toLowerCase().includes(searchText.toLowerCase()));
     }
     setFilteredData(filteredTasks);
   }, [task, searchText]);
@@ -125,8 +126,13 @@ const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
             <SearchIcon />
           </SearchIconWrapper>
           <StyledInputBase
-            placeholder="Search By Task Id..."
+            placeholder="Search By Task Title..."
             inputProps={{ 'aria-label': 'search' }}
+            endAdornment={
+              <IconButton onClick={handleClearSearchText}>
+                <HighlightOffIcon className='view-task-search-text-cancel-btn' />
+              </IconButton>
+            }
           />
         </Search>
       </Box>
@@ -135,7 +141,7 @@ const ViewTask = ({ task, searchText, handleSearch, handleDeleteTask }) => {
           ? <Box className='task-details-main-container'>
               {
                 filteredData
-                .slice(page * rowsPerPage, (page * rowsPerPage) + rowsPerPage)
+                .slice((page * rowsPerPage), (page * rowsPerPage) + rowsPerPage)
                 .map((el, index) => (
                   <Box key={index} className='task-details-full'>
                     <Box className='task-details'>
