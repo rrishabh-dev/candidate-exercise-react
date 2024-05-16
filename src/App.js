@@ -70,7 +70,7 @@ const App = () => {
   const handleSearch = (e) => {
     setSearchText(e.target.value);
   }
-
+  
   const handleClearSearchText = () => {
     setSearchText('');
   }

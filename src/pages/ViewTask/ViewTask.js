@@ -28,21 +28,10 @@ const Search = styled('div')(({ theme }) => ({
   },
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  height: '100%',
-  display: 'flex',
-  position: 'absolute',
-  alignItems: 'center',
-  pointerEvents: 'none',
-  justifyContent: 'center',
-  padding: theme.spacing(0, 2)
-}));
-
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   width: '100%',
   '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    padding: theme.spacing(1, 0),
   },
 }));
 
@@ -116,18 +105,20 @@ const ViewTask = ({ task, searchText, handleSearch, handleClearSearchText, handl
       <Box className='filters-container'>
         <Box className='sort-filter-container' onClick={handleSort}>
           <strong>Sort your list by title name</strong>
-          {toggleSort === 'asc' ? <ArrowDownwardIcon /> : <ArrowUpwardIcon />}
+          {toggleSort === 'asc' ? <IconButton><ArrowDownwardIcon /></IconButton> : <IconButton><ArrowUpwardIcon /></IconButton>}
         </Box>
         <Search
           value={searchText}
           onChange={(e) => handleSearch(e)}
         >
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
           <StyledInputBase
             placeholder="Search By Task Title..."
             inputProps={{ 'aria-label': 'search' }}
+            startAdornment={
+              <IconButton>
+                <SearchIcon />
+              </IconButton>
+            }
             endAdornment={
               <IconButton onClick={handleClearSearchText}>
                 <HighlightOffIcon className='view-task-search-text-cancel-btn' />
@@ -167,7 +158,6 @@ const ViewTask = ({ task, searchText, handleSearch, handleClearSearchText, handl
                         <IconButton
                           edge="end"
                           size="large"
-                          color="inherit"
                           onClick={() => handleDeleteTask(el)}
                           className='task-detail-container-third-icon-btn'
                         >
@@ -176,7 +166,6 @@ const ViewTask = ({ task, searchText, handleSearch, handleClearSearchText, handl
                         <IconButton
                           edge="end"
                           size="large"
-                          color="inherit"
                           className='task-detail-container-third-icon-btn'
                           onClick={() => navigate(`/edit-task/${el.taskId}`)}
                         >
